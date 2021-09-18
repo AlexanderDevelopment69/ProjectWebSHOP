@@ -3,38 +3,38 @@
 				<div class="row">
 					<div class="col-md-3">
 						<ul class="footer_box">
-							<h4>Products</h4>
-							<li><a href="#">Mens</a></li>
-							<li><a href="#">Womens</a></li>
-							<li><a href="#">Youth</a></li>
+							<h4>PRODUCTOS</h4>
+							<li><a href="#">Hombres</a></li>
+							<li><a href="#">Mujeres</a></li>
+							<li><a href="#">Niños</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<ul class="footer_box">
-							<h4>About</h4>
-							<li><a href="#">Careers and internships</a></li>
-							<li><a href="#">Sponserships</a></li>
-							<li><a href="#">team</a></li>
-							<li><a href="#">Catalog Request/Download</a></li>
+							<h4>INFORMACIÓN</h4>
+							<li><a href="#">Nosotros</a></li>
+							<li><a href="#">Marcas</a></li>
+							<li><a href="#">Eventos</a></li>
+							<li><a href="#">Contacto</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<ul class="footer_box">
-							<h4>Customer Support</h4>
-							<li><a href="#">Contact Us</a></li>
-							<li><a href="#">Shipping and Order Tracking</a></li>
-							<li><a href="#">Easy Returns</a></li>
-							<li><a href="#">Warranty</a></li>
-							<li><a href="#">Replacement Binding Parts</a></li>
+							<h4>CONTACTO</h4>
+							<li><a href="#">987 456 123</a></li>
+							<li><a href="#">Facebook</a></li>
+							<li><a href="#">marcketlilli@marcketlilli.com</a></li>
+							<li><a href="#">Instagram</a></li>
+							<li><a href="#">WhatsApp</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<ul class="footer_box">
-							<h4>Newsletter</h4>
+							<h4>SUSCRIBETE</h4>
 							<div class="footer_search">
 				    		   <form>
-				    			<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-				    			<input type="submit" value="Go">
+				    			<input type="text" value="Ingrese su correo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
+				    			<input type="submit" value="Ir">
 				    		   </form>
 					        </div>
 							<ul class="social">	
@@ -50,10 +50,10 @@
 				</div>
 				<div class="row footer_bottom">
 				    <div class="copy">
-			           <p>© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a></p>
+			           <p>© 2021 Creado por <a href="#" target="_blank">Proceso de Software</a></p>
 		            </div>
 					  <dl id="sample" class="dropdown">
-				        <dt><a href="#"><span>Change Region</span></a></dt>
+				        <dt><a href="#"><span>Cambiar Region</span></a></dt>
 				        <dd>
 				            <ul>
 				                <li><a href="#">Australia<img class="flag" src="images/as.png" alt="" /><span class="value">AS</span></a></li>

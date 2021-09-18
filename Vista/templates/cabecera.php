@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>TIENDITA</title>
+        <title>MARCK LILLI</title>
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
         <link href="css/style.css" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -115,12 +115,9 @@
                                 <div class="menu">
                                     <a class="toggleMenu" href="#"><img src="images/nav.png" alt="" /></a>
                                     <ul class="nav" id="nav">
-                                        <li><a href="shop.php">Shop</a></li>
-                                        <li><a href="team.php">Team</a></li>
-                                        <li><a href="experiance.php">Events</a></li>
-                                        <li><a href="experiance.php">Experiance</a></li>
-                                        <li><a href="shop.php">Company</a></li>
-                                        <li><a href="contact.php">Contact</a></li>
+                                        <li><a href="shop.php">Tienda</a></li>
+                                        <li><a href="experiance.php">Acerca de</a></li>
+                                        <li><a href="contact.php">Contacto</a></li>
                                         <div class="clear"></div>
                                     </ul>
                                     <script type="text/javascript" src="js/responsive-nav.js"></script>
@@ -132,7 +129,7 @@
                                 <div class="search-box">
                                     <div id="sb-search" class="sb-search">
                                         <form>
-                                            <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                                            <input class="sb-search-input" placeholder="Ingrese palabra ..." type="search" name="search" id="search">
 									        <input class="sb-search-submit" type="submit" value="">
                                             <span class="sb-icon-search"> </span>
                                         </form>
@@ -155,8 +152,8 @@
 						  <li class="list_desc"><h4><a href="#">velit esse molestie</a></h4><span class="actual">1 x
                           $12.00</span></li>
 						  <div class="login_buttons">
-							 <div class="check_button"><a href="checkout.php">Check out</a></div>
-							 <div class="login_button"><a href="login.php">Login</a></div>
+							 <div class="check_button"><a href="checkout.php">Verificar</a></div>
+							 <div class="login_button"><a href="login.php">Iniciar Sesion</a></div>
 							 <div class="clear"></div>
 						  </div>
 						  <div class="clear"></div>

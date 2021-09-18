@@ -10,9 +10,9 @@
                 <div class="slide_content">
                     <div class="slide_content_wrap">
                         <!-- Text title -->
-                        <h1 class="title">Run Over<br>Everything</h1>
+                        <h1 class="title">MARCK<br>LILLI</h1>
                         <!-- /Text title -->
-                        <div class="button"><a href="#">See Details</a></div>
+                        <div class="button"><a href="#">MAYOR INFORMACIÓN</a></div>
                     </div>
                 </div>
                <!-- /Texts container -->
@@ -22,8 +22,8 @@
                <img src="images/slider2.jpg" class="img-responsive" alt=""/>
                 <div class="slide_content">
                     <div class="slide_content_wrap">
-                        <h1 class="title">Run Over<br>Everything</h1>
-                       	<div class="button"><a href="#">See Details</a></div>
+                        <h1 class="title">MARCK<br>LILLI</h1>
+                       	<div class="button"><a href="#">MAYOR INFORMACIÓN</a></div>
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@
       </div>
 	  <div class="main">
 		<div class="content-top">
-			<h2>snowboards</h2>
-			<p>hendrerit in vulputate velit esse molestie consequat, vel illum dolore</p>
+			<h2>PORDUCTOS</h2>
+			<p>En este apartado encontraras nuestros productos..</p>
 			<div class="close_but"><i class="close1"> </i></div>
 				<ul id="flexiselDemo3">
 				<li><img src="images/board1.jpg" /></li>
@@ -47,7 +47,7 @@
 				<li><img src="images/board4.jpg" /></li>
 				<li><img src="images/board5.jpg" /></li>
 			</ul>
-		<h3>SnowBoard Extreme Series</h3>
+		<h3>Productos más comprados</h3>
 			<script type="text/javascript">
 		$(window).load(function() {
 			$("#flexiselDemo3").flexisel({
@@ -82,7 +82,7 @@
 		<div class="container">
 			<div class="row content_bottom-text">
 			  <div class="col-md-7">
-				<h3>The Mountains<br>Snowboarding</h3>
+				<h3>MARCK<br>LILLI</h3>
 				<p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
 				<p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.</p>
 			  </div>
@@ -91,61 +91,61 @@
 	</div>
 	<div class="features">
 		<div class="container">
-			<h3 class="m_3">Features</h3>
+			<h3 class="m_3">Marcas</h3>
 			<div class="close_but"><i class="close1"> </i></div>
 			  <div class="row">
 				<div class="col-md-3 top_box">
-				  <div class="view view-ninth"><a href="single.html">
+				  <div class="view view-ninth"><a href="single.php">
                     <img src="images/pic1.jpg" class="img-responsive" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>Hover Style #9</h2>
+                        <h2>Marca #9</h2>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
                       </div>
                    </a> 
 				</div>
-                  <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                  <p class="m_5">claritatem insitam</p>
+                  <h4 class="m_4"><a href="#">descrición de la marca</a></h4>
+                  <p class="m_5">pagina web</p>
                 </div>
                 <div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
+					<div class="view view-ninth"><a href="single.php">
                     <img src="images/pic2.jpg" class="img-responsive" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>Hover Style #9</h2>
+                        <h2>Marca #9</h2>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
                       </div>
                     </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
+                   <h4 class="m_4"><a href="#">descrición de la marca</a></h4>
+                   <p class="m_5">pagina web</p>
 				</div>
 				<div class="col-md-3 top_box">
-					<div class="view view-ninth"><a href="single.html">
+					<div class="view view-ninth"><a href="single.php">
                     <img src="images/pic3.jpg" class="img-responsive" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>Hover Style #9</h2>
+                        <h2>Marca #9</h2>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
                       </div>
                     </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
+                   <h4 class="m_4"><a href="#">descrición de la marca</a></h4>
+                   <p class="m_5">pagina web</p>
 				</div>
 				<div class="col-md-3 top_box1">
-					<div class="view view-ninth"><a href="single.html">
+					<div class="view view-ninth"><a href="single.php">
                     <img src="images/pic4.jpg" class="img-responsive" alt=""/>
                     <div class="mask mask-1"> </div>
                     <div class="mask mask-2"> </div>
                       <div class="content">
-                        <h2>Hover Style #9</h2>
+                        <h2>Marca #9</h2>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing.</p>
                       </div>
                      </a> </div>
-                   <h4 class="m_4"><a href="#">nostrud exerci ullamcorper</a></h4>
-                   <p class="m_5">claritatem insitam</p>
+                   <h4 class="m_4"><a href="#">descrición de la marca</a></h4>
+                   <p class="m_5">pagina web</p>
 				</div>
 			</div>
 		 </div>
