@@ -27,6 +27,7 @@ class ProductosController {
             $producto = new ProductosModels();
             $categoria = new CategoriasModels();
             $producto->setId($id);
+            $categoria->setId($id);
             $cate = $producto->getOne();
             $produc = $producto->getOne();
             $productito = $producto->getRandom(6);

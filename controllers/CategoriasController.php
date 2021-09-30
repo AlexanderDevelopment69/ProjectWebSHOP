@@ -14,17 +14,26 @@ class CategoriasController {
         require_once 'views/categorias/crear.php';
     }
     public function save() {
-        $crear = new CategoriasModels;
-        $crear->save();
+        $categoria = new CategoriasModels;
+        
 //        var_dump($crear->save());die();
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $categoria->setId($id);
             $save = $categoria->edit();
         //                    var_dump($save); die();                    
-        } 
+        } else {
+            $save = $categoria->save();
+        }
+        if ($save) {
+            $_SESSION['producto'] = "complete";
+        } else {
+            $_SESSION['producto'] = "failed";
+        }
 header("location: " . base_url . "Categorias/index");
     }
+
+        
 
      public function ver() {
         if(isset($_GET['id'])){

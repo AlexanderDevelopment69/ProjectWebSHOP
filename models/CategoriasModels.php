@@ -43,12 +43,10 @@ class CategoriasModels {
     }
 
     public function edit() {
-        $stock = $this->getStock();
-        if($stock == '0'){
-            $stock = 0;
-        }
+        if (isset($_POST) && isset($_POST['nombre'])) {
+            $nombre = $_POST['nombre'];
 //        var_dump($stock);die();
-        $sql = "UPDATE categorias SET nombre = '{$this->getNombre()}'";
+        $sql = "UPDATE categorias SET nombre = '$nombre'";
         $sql .=" WHERE id = {$this->getId()};";
 //        var_dump($sql);
         $editar = $this->db->query($sql);
@@ -60,6 +58,7 @@ class CategoriasModels {
         return $result;
 //        var_dump($sql); die();
         }
+    }
 
 
     public function getAll() {

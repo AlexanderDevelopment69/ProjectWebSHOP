@@ -36,7 +36,7 @@
                     <tr>
                         <td class="py-4 align-middle"><?= $cat->id; ?></td>
                         <td class="py-4 align-middle"><?= $cat->nombre; ?></td>
-                        <td>
+                        <td class="align-middle">
                             <a class="btn btn-outline-primary btn-sm" href="<?= base_url ?>Categorias/edit&id=<?= $cat->id ?>" role="button">Editar</a>
                             <a class="btn btn-outline-danger btn-sm" href="<?= base_url ?>Categorias/eliminar&id=<?= $cat->id ?>" role="button">Eliminar</a>
                         </td>

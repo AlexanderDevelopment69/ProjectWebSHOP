@@ -24,11 +24,12 @@
         
         <div class="col-sm-12">
             
-                <table class="table table-borderless table-hover table-responsive-md">
+                <table class="table table-borderless table-hover table-responsive-md" id ="tabla">
                 <thead class="bg-light">
                     <tr>
                     <th class="py-4 text-uppercase text-sm">ID</th>
                     <th class="py-4 text-uppercase text-sm">NOMBRE</th>
+                    <th class="py-4 text-uppercase text-sm">CATEGORIA</th>
                     <th class="py-4 text-uppercase text-sm">PRECIO</th>
                     <th class="py-4 text-uppercase text-sm">STOCK</th>
                     <th class="py-4 text-uppercase text-sm">IMAGEN</th>
@@ -36,10 +37,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?PHP while ($pro = $productos->fetch_object()): ?>
-                    <tr>
+                   <?PHP while ($pro = $productos->fetch_object()): ?>
+                  <tr>
                         <td class="py-4 align-middle"><?= $pro->id; ?></td>
                         <td class="py-4 align-middle"><?= $pro->nombre; ?></td>
+                        <td class="py-4 align-middle"><?= $pro->categoria_id; ?></td>
                         <td class="py-4 align-middle"><?= $pro->precio; ?></td>
                         <td class="py-4 align-middle"><?= $pro->stock; ?></td>
                         <td class="py-4 align-middle"><img src="<?= base_url ?>uploads/images/<?= $pro->imagen ?>" alt="" width="50"></td>
@@ -57,4 +59,8 @@
             
     </div>
 </div>
+<script>
+  var tabla = document.querySelector("#tabla");
+  var dataTable = new DataTable(tabla);
+</script>
 <?php endif ; ?>
