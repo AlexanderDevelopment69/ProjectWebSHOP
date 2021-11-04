@@ -49,6 +49,9 @@
                 <a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="<?=base_url?>Pedidos/gestionar_pedidos">
                     <span><i class="fas fa-shipping-fast"></i><svg class="svg-icon svg-icon-heavy me-2"></svg>Gestionar Pedidos</span>
                 </a>
+                <a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="<?=base_url?>usuarios/gestionar">
+                    <span><i class="fas fa-users"></i><svg class="svg-icon svg-icon-heavy me-2"></svg>Gestionar Clientes</span>
+                </a>
 
             <!--fin solo usuarios admin-->
             <?php endif; ?>

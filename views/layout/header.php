@@ -80,8 +80,10 @@
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle " id="homeDropdownMenuLink" href="<?= base_url ?>" >
                 Inicio</a></li>
 
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" id="categoryDropdownMenuLink" href="category.html" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categoria</a><div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" id="categoryDropdownMenuLink" href="category.html" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categoria</a>
+              <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink">
                   <!--Muestra Todas las categorias-->
                     <?php $categoriaMenu = Utils::showCategorias();?>
                     <?php while ($cate = $categoriaMenu->fetch_object()): ?>
@@ -117,54 +119,44 @@
               <div class="nav-item"><a class="navbar-icon-link" href="<?= base_url ?>usuarios/inicio">
                   <svg class="svg-icon">
                     <use xlink:href="#male-user-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Log in</span></a></div>
+                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">cuenta</span></a></div>
               <!-- Cart Dropdown-->
               <div class="nav-item dropdown"><a class="navbar-icon-link d-lg-none" href="cart.html"> 
                   <svg class="svg-icon">
                     <use xlink:href="#cart-1"> </use>
-                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">View cart</span></a>
+                  </svg><span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Ver Carrito</span></a>
                 <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="cart.html" data-bs-target="#" data-bs-toggle="dropdown" 
                 aria-haspopup="true" aria-expanded="false">
                     <svg class="svg-icon">
                       <use xlink:href="#cart-1"> </use>
-                    </svg>
-                    <div class="navbar-icon-link-badge">3</div></a>
+                    </svg><?php $stats = Utils::statsCarrito() ?>
+                    <div class="navbar-icon-link-badge"><?= $stats['cantidad']?></div></a>
                   <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                     <div class="navbar-cart-product-wrapper">
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" 
-                        src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times"></i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Skull Tee</a><small class="d-block text-muted">Quantity: 1 </small>
-                            <strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
+                              <?php if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) >= 1): ?>
+                                <?php foreach ($_SESSION['carrito'] as $indice => $elemento) : { $producto = $elemento['producto'];}?>
+                              <!-- cart item-->
+                                  <div class="navbar-cart-product"> 
+                                    <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="<?= base_url ?>uploads/images/<?= $producto->imagen ?>" alt="..."></a>
+                                      <div class="w-100"><a class="navbar-cart-product-close" href="<?= base_url ?>Carrito/remove&index=<?=$indice?>"><i class="fa fa-times"></i></a>
+                                        <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html"><?= $producto->nombre ?></a><small class="d-block text-muted">Cantidad: <?= $elemento['unidades'] ?> </small>
+                                        <strong class="d-block text-sm"><?= $producto->precio ?></strong></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                               
+
+                              <!-- Product-->
+                              <?php endforeach; ?>
+                               <!-- total price-->
+                               <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase"><?= $stats['total'] ?></strong></div>
+                                <!-- buttons-->
+                                <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="<?= base_url ?>Carrito/index">Ver <i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="<?= base_url ?>Pedidos/hacer">Comprar</a></div>
+                              
+                              <?php else: ?>
+                              <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">No tienes ningun producto seleccionado</p></div>
+                              <?php endif; ?>
                       </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" 
-                        src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times"></i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">Transparent Blouse</a><small class="d-block text-muted">Quantity: 1</small>
-                            <strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- cart item-->
-                      <div class="navbar-cart-product"> 
-                        <div class="d-flex align-items-center"><a href="detail.html"><img class="img-fluid navbar-cart-product-image" src="https://d19m59y37dris4.cloudfront.net/sell/2-0/img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <a class="navbar-cart-product-link" href="detail.html">White Tee</a><small class="d-block text-muted">Quantity: 1 </small><strong class="d-block text-sm">$75.00 </strong></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- total price-->
-                    <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong class="text-uppercase">$75.00</strong></div>
-                    <!-- buttons-->
-                    <div class="d-flex justify-content-between"><a class="btn btn-link text-dark me-3" href="cart.html">View Cart <i class="fa-arrow-right fa"></i></a><a class="btn btn-outline-dark" href="checkout1.html">Checkout</a></div>
-                  </div>
                 </div>
               </div>
             </div>

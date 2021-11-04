@@ -22,7 +22,7 @@ class CategoriasModels {
     public function save() {
         if (isset($_POST) && isset($_POST['nombre'])) {
             $nombre = $_POST['nombre'];
-            $sql = "INSERT INTO categorias VALUES (NULL, '$nombre'); ";
+            $sql = "CALL sp_insertar_categoria('$nombre')";
             $guardar =$this->db->query($sql);
             $result = FALSE;
             if($guardar){
@@ -32,7 +32,8 @@ class CategoriasModels {
         }
     }
     public function eliminar() {
-        $sql = "DELETE FROM categorias WHERE id = {$this->getId()} ;";
+        
+        $sql = "CALL sp_eliminar_categoria({$this->getId()})";
         $eliminar = $this->db->query($sql);
         
         $result = FALSE;
@@ -45,58 +46,59 @@ class CategoriasModels {
     public function edit() {
         if (isset($_POST) && isset($_POST['nombre'])) {
             $nombre = $_POST['nombre'];
-//        var_dump($stock);die();
-        $sql = "UPDATE categorias SET nombre = '$nombre'";
-        $sql .=" WHERE id = {$this->getId()};";
-//        var_dump($sql);
+        $sql="CALL sp_actualizar_categoria('$nombre',{$this->getId()})";
         $editar = $this->db->query($sql);
         $result = FALSE;
         if($editar){
             $result= TRUE;
         }
-//        var_dump($this->db->error);die();
         return $result;
-//        var_dump($sql); die();
         }
     }
 
 
     public function getAll() {
-        $sql = "SELECT * FROM categorias ORDER BY id ASC;";
-        
+        $sql = "CALL sp_mostrar_categorias";
         $buscar = $this->db->query($sql);
+        
         return $buscar;
     }
+
     public function getColores() {
-        $sql = "SELECT * FROM colores ORDER BY id ASC;";
+        $sql = "call sp_mostrar_colores";
         
         $buscar = $this->db->query($sql);
         return $buscar;
     }
+
     public function getEstados() {
-        $sql = "SELECT * FROM estados ORDER BY id ASC;";
+        $sql = "call sp_mostrar_estados";
         
         $buscar = $this->db->query($sql);
         return $buscar;
     }
+
     public function getMarca() {
-        $sql = "SELECT * FROM marcas ORDER BY id ASC;";
+        $sql = "call sp_mostrar_marcas";
         
         $buscar = $this->db->query($sql);
         return $buscar;
     }
+
     public function getProveedor() {
-        $sql = "SELECT * FROM proveedores ORDER BY id ASC;";
+        $sql = "call sp_mostrar_proveedores";
         
         $buscar = $this->db->query($sql);
         return $buscar;
     }
+
     public function getTalla() {
-        $sql = "SELECT * FROM tallas ORDER BY id ASC;";
+        $sql = "call sp_mostrar_tallas";
         
         $buscar = $this->db->query($sql);
         return $buscar;
     }
+
     public function getOne() {
         $sql = "SELECT * FROM categorias WHERE id = {$this->getId()};";
         

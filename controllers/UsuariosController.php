@@ -13,6 +13,8 @@ class UsuariosController {
     public function perfil() {
         require_once 'views/usuarios/perfil.php';
     }
+
+
     public function save() {
         if (isset($_POST)) {
             $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : FALSE;
@@ -39,7 +41,6 @@ class UsuariosController {
                 $correo_validate = FALSE;
                 $errores['correo'] = 'Correo con datos incorrectos';
             }
-//            var_dump($errores);die();
             if (count($errores) == 0) {
                 $usuario = new Usuario();
                 $usuario->setNombre($nombre);
@@ -47,28 +48,13 @@ class UsuariosController {
                 $usuario->setEmail($correo);
                 $usuario->setPassword($contraseña);
 
-
-
-                if (isset($_FILES)) {
-                    $file = $_FILES['foto'];
-                    $filename = $file['name'];
-                    $filetype = $file['type'];
-//                var_dump($file);                die();
-                    if ($filetype == "image/jpeg" || $filetype == "image/png" || $filetype == "image/jpg" || $filetype == "image/tiff" || $filetype == "image/gif") {
-                        if (!is_dir('uploads/images')) {
-                            mkdir('uploads/images', 0777, true);
-                        }
-                        move_uploaded_file($file['tmp_name'], 'uploads/images/' . $filename);
-                        $usuario->setImagen($filename);
-                    }
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    $usuario->setId($id);
+                    $save = $usuario->edit();                     
+                } else {
+                    $save = $usuario->save();
                 }
-
-
-
-
-
-
-                $save = $usuario->save();
                 if ($save) {
                     $_SESSION['register'] = 'complete';
                 } else {
@@ -76,7 +62,6 @@ class UsuariosController {
                 }
             } else {
                 $_SESSION['errores'] = $errores;
-//                S($_SESSION['errores']);die();
             }
         } else {
             $_SESSION['register'] = 'failed';
@@ -94,6 +79,9 @@ class UsuariosController {
                 if ($identity->rol == 'admin') {
                     $_SESSION['admin'] = TRUE;
                 }
+                if ($identity->rol == 'user') {
+                    $_SESSION['user'] = TRUE;
+                }
             } else {
                 $_SESSION['error_login'] = 'identificacion fallida';
             }
@@ -108,5 +96,42 @@ class UsuariosController {
             unset($_SESSION['admin']);
         }
         header("location: " . base_url);
+    }
+
+    public function gestionar() {
+        $usuario = new Usuario();
+        $usuario = $usuario->getAll();
+        require_once 'views/usuarios/gestionar.php';
+    }
+
+    public function edit() {
+        Utils::isAdmin();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $usuario = new Usuario();
+            $usuario->setId($id);
+            $usu = $usuario->getOne();
+            require_once 'views/usuarios/registrar.php';
+        } else {
+            header("location : " . base_url . "usuarios/gestionar");
+        }
+    }
+
+    public function eliminar() {
+        Utils::isAdmin();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $usuario = new Usuario();
+            $usuario->setId($id);
+            $delete = $usuario->eliminar();
+            if ($delete) {
+                $_SESSION['delete'] = 'delete';
+            } else {
+                $_SESSION['delete'] = 'notDelete';
+            }
+        } else {
+            $_SESSION['delete'] = 'notDelete';
+        }
+        header("location: " . base_url . "usuarios/gestionar");
     }
 }

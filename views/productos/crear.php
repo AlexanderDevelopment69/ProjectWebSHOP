@@ -135,7 +135,7 @@
                     <div class="col-sm-4">
                       <div class="mb-4">
                         <label class="form-label" for="state">Subir Imagen</label>
-                        <input type="file" name="foto"  class="form-control ">
+                        <input  type="file" name="foto"  class="form-control ">
                       </div>
                     </div>
                     <div class="col-sm-1">

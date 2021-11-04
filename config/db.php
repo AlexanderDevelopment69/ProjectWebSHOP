@@ -5,4 +5,5 @@ class database{
         $db-> query("SET NAMES 'utf8'");
         return $db;
     }
+
 }

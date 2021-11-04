@@ -1,6 +1,10 @@
 <?php if (isset($_SESSION['pedido']) && $_SESSION['pedido'] == 'confirmet'): ?>
-    <h3 class="w-100">su pedido ha sido confirmado</h3>
-    <p> Por favor realice el pago a la cuenta bancaria 07829389913654 para que su podice sea procesado y enviado!! </p>
+    <div class="row justify-content-center">
+    <div class="col-lg-5">
+    <div class="block-header">
+        <h6 class="text-uppercase">Su pedido ah sido confirmado</h6>
+    </div>
+    <!--<p> Por favor realice el pago a la cuenta bancaria xxxxxxxxxxxxxxxxxx para que su pedido sea procesado y enviado!! </p>-->
 
     <p class="w-100 text-left font-weight-bold">Id pedido: <?= $pedido->id ?></p>
     <p class="w-100 text-left font-weight-bold">Total a pagar: <?= $pedido->costo ?></p>
@@ -27,6 +31,7 @@
             </tr>
         <?php endwhile; ?>
     </table>
+                </div></div>
 
 <?php elseif (isset($_SESSION['pedido']) && $_SESSION['pedido'] == 'failet'): ?>
     <h3 class="w-100">su pedido No puede ser realizado</h3>

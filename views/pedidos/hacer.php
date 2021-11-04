@@ -1,37 +1,48 @@
 <?php if (isset($_SESSION['identity'])): ?>
     <?php if (isset($_SESSION['carrito'])): ?>
 
-        <h3 class="w-100"> Finalizar pedido</h3>
+        
         <?php echo isset($_SESSION['errores']) ? Utils::ShowError('general') : '' ?>
-        <form action="<?= base_url ?>Pedidos/save" method="post" class="d-flex justify-content-around flex-wrap text-left mt-5">
-            <div class="form-group mx-2 col-5">
-                <label for="departamento">Departamento: </label>
-                <input type="text" name="departamento" placeholder="Departamento" required class="form-control" >
+        
+        <div class="row justify-content-center">
+        <div class="col-lg-5">
+        <div class="block-header">
+            <h6 class="text-uppercase">Finalizar Pedido | HUANCAYO</h6>
+        </div>
+        <form action="<?= base_url ?>Pedidos/save" method="post" >
+            <div class="mb-4 ">
+                <label class="form-label" for="departamento">Dirección: </label>
+                <input class="form-control" type="text" name="departamento" placeholder="Ejem. Av Calmell del Solar #580 " required class="form-control" >
                 <?php echo isset($_SESSION['errores']) ? Utils::ShowError('departamento') : '' ?>
             </div>
-            <div class="form-group mx-2 col-5">
-                <label for="municipio">Municipio: </label>
-                <input type="text" name="municipio" placeholder="Municipio" required class="form-control" >
+            <div class="mb-4 ">
+                <label class="form-label" for="municipio">Referencia: </label>
+                <input class="form-control" type="text" name="municipio" placeholder="Ejem. A dos cuadras del parque constitución" required class="form-control" >
                 <?php echo isset($_SESSION['errores']) ? Utils::ShowError('municipio') : '' ?>
 
             </div>
-            <div class="form-group mx-2 col-8">
-                <label for="direccion">Direccion: </label>
-                <input type="text" name="direccion" placeholder="Direccion" required class="form-control" >
+            <div class="mb-4">
+                <label class="form-label"for="direccion">Celular: </label>
+                <input class="form-control" type="text" name="direccion" placeholder="Ejem 999999999" required class="form-control" >
                 <?php echo isset($_SESSION['errores']) ? Utils::ShowError('direccion') : '' ?>
 
             </div>
-
-            <input type="submit" value="Confirmar " class="btn btn-success col-4">
+            <a  class="w-100" href="<?= base_url ?>Carrito/index">Ver información de pedido</a>
+            <div class="mb-4 text-center">
+                    <button class="btn btn-outline-dark" type="submit"><i class="far fa-save"></i>Confirmar</button>
+            </div>
             <?php Utils::DeleteSession('errores') ?>
+            
         </form>
-        <a  class="w-100" href="<?= base_url ?>Carrito/index">Ver informacion del pedido completo</a>
+    </div>
+    </div>
+        
     <?php else: ?>
         <h3 class="w-100"> Debes agregar algun producto al carrito</h3>
         <p class="w-100">Ve al inicio de la pagina y agrega algun producto al carrito <a href="<?= base_url ?>">aqui</a></p>
     <?php endif; ?>
 <?php else: ?>
-    <h3 class="w-100"> Debes registrarte para finalizar pedido</h3>
-    <p class="w-100">Regitrate y termnina tu pedido </p>
+    <h3 class="w-100"> Debes registrarte para finalizar el pedido</h3>
+    <p class="w-100">Regitrate y termina tú pedido </p>
     <p class="w-100">Registrate <a href="<?= base_url ?>Usuarios/registrar">aqui</a></p>
 <?php endif; ?>

@@ -1,5 +1,5 @@
 <?php
-
+// FALTA HACER LOS PROCEDIMIENTOS --  CAMBIAR LAS SENTENCIAS SQL -----------------------------------------
 class Pedidos {
 
     private $id;
@@ -90,8 +90,7 @@ class Pedidos {
     }
 
     function request() {
-//        var_dump($id_user); die();
-        $sql = " INSERT INTO pedidos VALUES (NULL, {$this->getUsuario_id()}, '{$this->getDepartamento()}', '{$this->municipio}', '{$this->direccion}', {$this->getCoste()}, 'confirmed', CURDATE(), CURTIME()) ;";
+        $sql = " CALL sp_insertar_pedidos(NULL,{$this->getUsuario_id()}, '{$this->getDepartamento()}', '{$this->municipio}', '{$this->direccion}', {$this->getCoste()}, 'confirmed', CURDATE(), CURTIME())";
         $guardar = $this->db->query($sql);
         $result = false;
         if ($guardar) {
@@ -106,14 +105,11 @@ class Pedidos {
         $pedido_id = $query->fetch_object()->pedido;
         foreach ($_SESSION['carrito'] as $elemento) {
             $producto = $elemento['producto'];
-            $insert = "INSERT INTO linea_pedidos VALUES (NULL, {$pedido_id}, {$producto->id}, {$elemento['unidades']});";
-//            var_dump($insert);
+            $insert = "CALL sp_insertar_linea_pedidos(0, {$pedido_id}, {$producto->id}, {$elemento['unidades']});";
             $save = $this->db->query($insert);
-            $update = "UPDATE productos SET stock = stock - {$elemento['unidades']} WHERE id = {$producto->id};";
-//            var_dump($update);die();
+            $update = "CALL sp_actualizar_stock_producto({$elemento['unidades']},{$producto->id})";
             $up = $this->db->query($update);
         }
-//            var_dump($r);
         $result = false;
         if ($save) {
             $result = TRUE;
@@ -122,68 +118,76 @@ class Pedidos {
     }
 
     function getIdLastPedido() {
-        $sql = " SELECT LAST_INSERT_ID() AS pedido; ";
+        $sql = "SELECT LAST_INSERT_ID() AS pedido; ";
         $query = $this->db->query($sql);
         $pedido_id = $query->fetch_object()->pedido;
         return $pedido_id;
     }
 
     function getByUser() {
-        $sql = " SELECT * FROM pedidos WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC LIMIT 1; ";
+        $sql = " CALL sp_mostrar_getbyUser({$this->getUsuario_id()})";
         $pedido = $this->db->query($sql);
         $pedido = $pedido->fetch_object();
         return $pedido;
     }
 
     function getAllByUser() {
-        $sql = " SELECT * FROM pedidos WHERE usuario_id = {$this->getUsuario_id()} ORDER BY id DESC ; ";
+        $sql = " CALL sp_mostrar_AllbyUser({$this->getUsuario_id()})";
         $pedido = $this->db->query($sql);
         return $pedido;
     }
 
     function getOne() {
-        $sql = " SELECT * FROM pedidos WHERE id = {$this->getId()}; ";
+        $sql = " CALL sp_mostrar_pedido({$this->getId()})";
         $pedido = $this->db->query($sql);
         return $pedido->fetch_object();
     }
 
     function getProductosByPedido() {
-        $sql = " SELECT pr.*, lp.unidades FROM productos pr "
-                . "INNER JOIN linea_pedidos lp ON pr.id = lp.producto_id "
-                . "WHERE lp.pedido_id = {$this->getId()}; ";
+        $sql = " CALL sp_mostrar_getProductosbyPedidos({$this->getId()})";
         $productoPedido = $this->db->query($sql);
         $r = $productoPedido;
-//        var_dump($sql);
-//        var_dump($this->db->error);
-//        die();
         return $r;
-//        var_dump($r); die();
     }
 
     function getAll() {
-        $sql = " SELECT * FROM pedidos; ";
+        $sql = " CALL sp_mostrar_todos_pedidos()";
         $pedido = $this->db->query($sql);
         $r = $pedido;
         return $r;
-//        var_dump($r); die();
     }
 
     public function edit() {
-        $sql = "UPDATE pedidos SET estado = '{$this->getEstado()}' ";
-        $sql .=" WHERE id = {$this->getId()};";
-//        var_dump($sql);die();
+        $sql = "CALL sp_actualizar_pedidos('{$this->getEstado()}',{$this->getId()})";
         $editar = $this->db->query($sql);
         $result = FALSE;
         if ($editar) {
             $result = TRUE;
         }
-//        var_dump($this->db->error);die();
         return $result;
-//        var_dump($sql); die();
     }
+    public function eliminarlp() {
+       $sql = "CALL sp_eliminar_lina_pedido({$this->getId()})";
+       $eliminarlp=$this->db->query($sql);
+        $result = FALSE;
+        if($eliminarlp){
+            $result = TRUE;
+        }
+        return $result;
+    }
+    public function eliminar() {
+        $sql = "CALL sp_eliminar_pedido({$this->getId()})";
+        $eliminar=$this->db->query($sql);
+         $result = FALSE;
+         if($eliminar){
+             $result = TRUE;
+         }
+         return $result;
+     }
 
     public function downStock() {
         $sql = " UPDATE productos SET stock = ";
     }
+    
 
 }

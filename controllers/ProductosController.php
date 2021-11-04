@@ -31,7 +31,8 @@ class ProductosController {
             $cate = $producto->getOne();
             $produc = $producto->getOne();
             $productito = $producto->getRandom(6);
-//            var_dump($produc); die(); 
+            
+            //var_dump($produc); die(); 
             require_once 'views/productos/ver.php';
         } 
     }

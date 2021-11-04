@@ -124,15 +124,13 @@ class ProductosModels{
     }
 
     public function getAll(){
-        $sql = "SELECT * FROM productos ORDER BY id DESC; ";
+        $sql = "CALL sp_getAll ";
         $result = $this->db->query($sql);
         return $result;
     }
+    
     public function getAllCategory(){
-        $sql = "SELECT p.*, c.nombre AS catNombre FROM productos p "
-                . "INNER JOIN categorias c ON c.id = p.categoria_id "
-                . "WHERE p.categoria_id = {$this->getCategoria_id()} "
-                . "ORDER BY RAND(); ";
+        $sql = "CALL sp_getAllCategory('{$this->getCategoria_id()}')";
 //        var_dump($sql);
         $result = $this->db->query($sql);
 //        var_dump($this->db->error);
@@ -140,19 +138,14 @@ class ProductosModels{
     }
     
     public function getRandom($limit){
-        $sql = "SELECT * FROM productos WHERE stock > 0 ORDER BY RAND() LIMIT {$limit}; ";
+        $sql="CALL sp_getRandomPro($limit)";
         $result = $this->db->query($sql);
         return $result;
     }
-    public function getOne(){
-        $sql = "SELECT * FROM productos WHERE id = {$this->getId()}; ";
-        $result = $this->db->query($sql);
-        return $result->fetch_object();
-    }
     public function save(){
         print_r("$_POST");
-        $sql = "INSERT INTO productos VALUES (null, '{$this->getCategoria_id()}', '{$this->getNombre()}', '{$this->getDescripcion()}', '{$this->getPrecio()}' , '{$this->getStock()}', '{$this->getCosto()}', CURDATE(), '{$this->getImagen()}', '{$this->getColor()}', '{$this->getEstado()}', '{$this->getMarca()}', '{$this->getProveedor()}', '{$this->getTalla()}');";
-//        var_dump($sql);die();
+        $sql="CALL sp_insertar_productos ('{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}', '{$this->getPrecio()}' , '{$this->getStock()}', '{$this->getCosto()}', CURDATE(), '{$this->getImagen()}', '{$this->getColor()}',  '{$this->getEstado()}', '{$this->getMarca()}', '{$this->getProveedor()}', '{$this->getTalla()}' )";
+             print_r($sql);
         $guardar = $this->db->query($sql);
         $result = FALSE;
         if($guardar){
@@ -161,9 +154,8 @@ class ProductosModels{
         return $result;
     }
     public function eliminar() {
-        $sql = "DELETE FROM productos WHERE id = {$this->getId()} ;";
+        $sql = "CALL sp_eliminar_productos({$this->getid()})";
         $eliminar = $this->db->query($sql);
-        
         $result = FALSE;
         if($eliminar){
             $result = TRUE;
@@ -175,20 +167,22 @@ class ProductosModels{
         if($stock == '0'){
             $stock = 0;
         }
-//        var_dump($stock);die();
-        $sql = "UPDATE productos SET nombre = '{$this->getNombre()}', descripcion = '{$this->getDescripcion()}', precio = {$this->getPrecio()} , stock = {$stock}, categoria_id = {$this->getCategoria_id()} ";
-        if($this->getImagen() != NULL){
-            $sql .= ", imagen = '{$this->getImagen()}'";
-        }
-        $sql .=" WHERE id = {$this->getId()};";
-//        var_dump($sql);
+        
+        $sql="CALL sp_actualizar_productos ('{$this->getCategoria_id()}','{$this->getNombre()}','{$this->getDescripcion()}', '{$this->getPrecio()}' ,'$stock', '{$this->getCosto()}','{$this->getImagen()}','{$this->getColor()}', '{$this->getEstado()}','{$this->getMarca()}', '{$this->getProveedor()}', '{$this->getTalla()}','{$this->getId()}' )";
+        
         $editar = $this->db->query($sql);
         $result = FALSE;
         if($editar){
             $result= TRUE;
         }
-//        var_dump($this->db->error);die();
+
         return $result;
-//        var_dump($sql); die();
+
+        }
+
+        public function getOne(){
+            $sql = "SELECT * FROM productos WHERE id = {$this->getId()}; "; // no se me ocurre una idea :c
+            $result = $this->db->query($sql);
+            return $result->fetch_object();
         }
 }

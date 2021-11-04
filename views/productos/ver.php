@@ -21,12 +21,10 @@
       </div>
       <!-- /Fullscreen search area-->
     </header>
-    
     <section class="product-details">
       <div class="container">
         <div class="row">
         <?php if ($produc->imagen != NULL): ?>
-          <?php print_r($produc);?>
           <div class="col-lg-6 col-xl-7 pt-4 order-2 order-lg-1"><a class="glightbox d-block mb-4" href="<?= base_url ?>uploads/images/<?= $produc->imagen ?>" data-title="Modern Jacket 1 - Caption text" data-gallery="product-gallery">
               <div data-bs-toggle="zoom" data-image="<?= base_url ?>uploads/images/<?= $produc->imagen ?>">
               <img class="img-fluid" src="<?= base_url ?>uploads/images/<?= $produc->imagen ?>" alt="Modern Jacket 1"></div></a>

@@ -54,8 +54,7 @@ class Usuario {
         $this->imagen = $imagen;
     }
     public function save() {
-        
-        $sql = "INSERT INTO usuarios VALUES (NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user', null);";
+        $sql ="CALL sp_insertar_usuario('{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}')";
         $guardar = $this->db->query($sql);
         $result = false;
         if ($guardar) {
@@ -67,7 +66,8 @@ class Usuario {
         $result = FALSE;
         $email = $this->email;
         $password = $this->password;
-        $sql = "SELECT * FROM usuarios WHERE email = '$email'; ";
+       
+        $sql= "CALL sp_login_usuario('$email')";
         $buscar = $this->db->query($sql);
 //        var_dump($buscar->fetch_object());die();
         if ($buscar && $buscar->num_rows == 1) {
@@ -78,5 +78,34 @@ class Usuario {
             }
         }
         return $result;
+    }
+    public function getAll(){
+        $sql = "CALL sp_mostrar_todos_usuarios()";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+    public function edit() {
+
+            $sql="CALL sp_actualizar_usuario('{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPassword()}',{$this->getId()})";
+            $editar = $this->db->query($sql);
+            $result = FALSE;
+            if($editar){
+                $result= TRUE;
+            }
+        return $result;
+    }
+    public function eliminar() {
+        $sql = "CALL sp_eliminar_usuario({$this->getId()})";
+        $eliminar = $this->db->query($sql);
+        $result = FALSE;
+        if($eliminar){
+            $result = TRUE;
+        }
+        return $result;
+    }
+    public function getOne(){
+        $sql = "SELECT * FROM usuarios WHERE id = {$this->getId()}; "; // no se me ocurre una idea :c
+        $result = $this->db->query($sql);
+        return $result->fetch_object();
     }
 }

@@ -18,8 +18,6 @@ if (isset($_GET['controller'])) {
     show_error();
     exit();
 }
-//var_dump($nombre_controlador);
-//die();
 if (class_exists($nombre_controlador)) {
     $controlador = new $nombre_controlador();
 

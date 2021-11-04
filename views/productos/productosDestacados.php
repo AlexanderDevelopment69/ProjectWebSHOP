@@ -92,126 +92,22 @@
           <div class="sidebar col-xl-3 col-lg-4 pr-xl-5 order-lg-1">
             <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#categoriesMenu" aria-expanded="false" aria-controls="categoriesMenu">Product Categories</a>
               <div class="expand-lg collapse" id="categoriesMenu">
-                <div class="nav nav-pills flex-column mt-4 mt-lg-0"> <a class="nav-link d-flex justify-content-between mb-2 " href="#"><span>Categorias</span><span class="sidebar-badge"> 120</span></a>
-                  <div class="nav nav-pills flex-column ms-3"><a class="nav-link mb-2" href="#">Lorem ipsum</a><a class="nav-link mb-2" href="#">Dolor</a><a class="nav-link mb-2" href="#">Sit amet</a><a class="nav-link mb-2" href="#">Donec vitae</a>
-                  </div><a class="nav-link d-flex justify-content-between mb-2 active" href="#"><span>Jeans &amp; chinos</span><span class="sidebar-badge"> 55</span></a>
-                  <div class="nav nav-pills flex-column ms-3"><a class="nav-link mb-2" href="#">Lorem ipsum</a><a class="nav-link mb-2" href="#">Dolor</a><a class="nav-link mb-2" href="#">Sit amet</a><a class="nav-link mb-2" href="#">Donec vitae</a>
-                  </div><a class="nav-link d-flex justify-content-between mb-2 " href="#"><span>Accessories</span><span class="sidebar-badge"> 80</span></a>
-                  <div class="nav nav-pills flex-column ms-3"><a class="nav-link mb-2" href="#">Sit amet</a><a class="nav-link mb-2" href="#">Donec vitae</a><a class="nav-link mb-2" href="#">Lorem ipsum</a><a class="nav-link mb-2" href="#">Dolor</a>
-                  </div>
+                <div class="nav nav-pills flex-column mt-4 mt-lg-0">
+                  <a class="nav-link d-flex justify-content-between mb-2 " href="#">
+                    <span>
+                    <!--Muestra Todas las categorias-->
+                    <?php $categoriaMenu = Utils::showCategorias();?>
+                    <?php while ($cate = $categoriaMenu->fetch_object()): ?>
+                        <a class="dropdown-item text-decoration-none text-uppercase" href="<?= base_url ?>Categorias/ver&id=<?= $cate->id ?>"><?= $cate->nombre ?></a>
+                    <?php endwhile; ?>
+                    <!--Fin de muestra Todas las categorias-->
+                  </span>
+                </a>
+                  
                 </div>
               </div>
             </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#priceFilterMenu" aria-expanded="false" aria-controls="priceFilterMenu">Filter by price</a>
-              <div class="expand-lg collapse" id="priceFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Price  </h6>
-                <div class="mt-4 mt-lg-0" id="slider-snap"> </div>
-                <div class="nouislider-values">
-                  <div class="min">From $<span id="slider-snap-value-lower"></span></div>
-                  <div class="max">To $<span id="slider-snap-value-upper"></span></div>
-                  <input class="slider-snap-input" type="hidden" name="pricefrom" id="slider-snap-input-lower" value="40">
-                  <input class="slider-snap-input" type="hidden" name="priceto" id="slider-snap-input-upper" value="110">
-                </div>
-              </div>
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#brandFilterMenu" aria-expanded="true" aria-controls="brandFilterMenu">Filter by brand</a>
-              <!-- Brand filter menu - this menu has .show class, so is expanded by default-->
-              <div class="expand-lg collapse show" id="brandFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Brands </h6>
-                <form class="mt-4 mt-lg-0" action="#"> 
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand0" type="checkbox" name="clothes-brand" checked>
-                      <label class="form-check-label" for="brand0">Calvin Klein <small>(18)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand1" type="checkbox" name="clothes-brand" checked>
-                      <label class="form-check-label" for="brand1">Levi Strauss <small>(30)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand2" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand2">Hugo Boss <small>(120)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand3" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand3">Tomi Hilfiger <small>(70)</small></label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="brand4" type="checkbox" name="clothes-brand">
-                      <label class="form-check-label" for="brand4">Tom Ford  <small>(110)</small></label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"> <a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#sizeFilterMenu" 
-            aria-expanded="false" aria-controls="sizeFilterMenu">Filter by size</a>
-              
-            <!-- Size filter menu-->
-              <div class="expand-lg collapse" id="sizeFilterMenu"> 
-                <h6 class="sidebar-heading d-none d-lg-block">Size </h6>
-                <form class="mt-4 mt-lg-0" action="#">  
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size0" type="radio" name="size" checked>
-                      <label class="form-check-label" for="size0">Small</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size1" type="radio" name="size">
-                      <label class="form-check-label" for="size1">Medium</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size2" type="radio" name="size">
-                      <label class="form-check-label" for="size2">Large</label>
-                    </div>
-                  </div>
-                  <div class="mb-1">
-                    <div class="form-check">
-                      <input class="form-check-input" id="size3" type="radio" name="size">
-                      <label class="form-check-label" for="size3">X-Large</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="sidebar-block px-3 px-lg-0"><a class="d-lg-none block-toggler" data-bs-toggle="collapse" href="#colourFilterMenu" aria-expanded="false" aria-controls="colourFilterMenu">Filter by colour</a>
-              <!-- Size filter menu-->
-
-              <div class="expand-lg collapse" id="colourFilterMenu">
-                <h6 class="sidebar-heading d-none d-lg-block">Colour </h6>
-                <div class="mt-4 mt-lg-0"> 
-                  <ul class="list-inline mb-0 colours-wrapper">
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Blue" style="background-color: #668cb9" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_White" style="background-color: #fff" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_White" id="colour_sidebar_White">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Violet" style="background-color: #8b6ea4" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Violet" id="colour_sidebar_Violet">
-                    </li>
-                    <li class="list-inline-item">
-                      <label class="btn-colour" for="colour_sidebar_Red" style="background-color: #dd6265" data-allow-multiple> </label>
-                      <input class="input-invisible" type="checkbox" name="colour" value="value_sidebar_Red" id="colour_sidebar_Red">
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <!-- Size filter menu--> 
             </div>
           </div>
 

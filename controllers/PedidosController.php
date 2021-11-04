@@ -122,4 +122,25 @@ class PedidosController {
         header('location: ' . base_url . 'pedidos/detalles&id=' . $id);
     }
 
+    public function eliminar() {
+        Utils::isAdmin();
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $pedido = new Pedidos();
+            $pedido->setId($id);
+            $deletelp = $pedido->eliminarlp();
+            if($deletelp){
+                $delete=$pedido->eliminar();
+            }
+            if ($delete) {
+                $_SESSION['delete'] = 'delete';
+            } else {
+                $_SESSION['delete'] = 'notDelete';
+            }
+        } else {
+            $_SESSION['delete'] = 'notDelete';
+        }
+        header("location: " . base_url . "Pedidos/gestionar_pedidos");
+    }
+
 }

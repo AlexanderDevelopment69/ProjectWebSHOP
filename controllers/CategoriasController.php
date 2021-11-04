@@ -2,6 +2,7 @@
 require_once 'models/CategoriasModels.php';
 require_once 'models/ProductosModels.php';
 
+
 class CategoriasController {
     public function index() {
         Utils::isAdmin();
@@ -9,10 +10,12 @@ class CategoriasController {
         $categorias = $categoria->getAll();
         require_once 'views/categorias/categorias.php';
     }
+
     public function crear() {
         Utils::isAdmin();
         require_once 'views/categorias/crear.php';
     }
+    
     public function save() {
         $categoria = new CategoriasModels;
         
