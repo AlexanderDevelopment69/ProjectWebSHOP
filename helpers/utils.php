@@ -37,7 +37,13 @@ class Utils {
     $estados = new CategoriasModels();
     $estados = $estados->getEstados();
     return $estados;
-}
+    }
+    public static function showPagos() {
+        require_once 'models/CategoriasModels.php';
+        $estados = new CategoriasModels();
+        $estados = $estados->getPagos();
+        return $estados;
+    }
 public static function showMarca() {
     require_once 'models/CategoriasModels.php';
     $marca = new CategoriasModels();

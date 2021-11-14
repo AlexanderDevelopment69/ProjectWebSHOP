@@ -9,6 +9,7 @@ class Pedidos {
     private $direccion;
     private $coste;
     private $estado;
+    private $pago;
     private $fecha;
     private $hora;
     private $db;
@@ -45,6 +46,10 @@ class Pedidos {
         return $this->estado;
     }
 
+    function getPago() {
+        return $this->pago;
+    }
+
     function getFecha() {
         return $this->fecha;
     }
@@ -79,6 +84,10 @@ class Pedidos {
 
     function setEstado($estado) {
         $this->estado = $estado;
+    }
+
+    function setPago($pago) {
+        $this->pago = $pago;
     }
 
     function setFecha($fecha) {
@@ -159,6 +168,16 @@ class Pedidos {
 
     public function edit() {
         $sql = "CALL sp_actualizar_pedidos('{$this->getEstado()}',{$this->getId()})";
+        $editar = $this->db->query($sql);
+        $result = FALSE;
+        if ($editar) {
+            $result = TRUE;
+        }
+        return $result;
+    }
+
+    public function pago() {
+        $sql = "CALL sp_actualizar_pago('{$this->getPago()}',{$this->getId()})";
         $editar = $this->db->query($sql);
         $result = FALSE;
         if ($editar) {

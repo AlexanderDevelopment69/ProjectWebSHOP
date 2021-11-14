@@ -14,7 +14,7 @@
                     <th class="py-4 text-uppercase text-sm">Id pedido</th>
                     <th class="py-4 text-uppercase text-sm">Costo</th>
                     <th class="py-4 text-uppercase text-sm">Fecha</th>
-                    <th class="py-4 text-uppercase text-sm">Estado</th>
+                    <th class="py-4 text-uppercase text-sm">Pedido</th>
                     <th class="py-4 text-uppercase text-sm">Acción</th>
                 </tr>
             </thead>

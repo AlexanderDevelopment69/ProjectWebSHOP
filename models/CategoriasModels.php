@@ -78,6 +78,13 @@ class CategoriasModels {
         return $buscar;
     }
 
+    public function getPagos() {
+        $sql = "SELECT * FROM pago ORDER BY id ASC;";
+        $buscar = $this->db->query($sql);
+        return $buscar;
+    }
+    
+
     public function getMarca() {
         $sql = "call sp_mostrar_marcas";
         

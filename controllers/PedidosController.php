@@ -105,6 +105,7 @@ class PedidosController {
         require_once 'views/pedidos/mis_pedidos.php';
     }
 
+
     public function edit() {
         Utils::isAdmin();
 
@@ -117,6 +118,22 @@ class PedidosController {
             $pedido->setId($id);
             $pedido->setEstado($estado);
             $pedido->edit();
+            header('location: ' . base_url . 'pedidos/detalles&id=' . $id);
+        }
+        header('location: ' . base_url . 'pedidos/detalles&id=' . $id);
+    }
+    public function pago() {
+        Utils::isAdmin();
+
+        if (isset($_POST['id']) && isset($_POST['pago'])) {
+            //recogemos los datos del formulario
+            $id = $_POST['id'];
+            $pago = $_POST['pago'];
+            //creamos y ejecutamos las funciones
+            $pedido = new Pedidos();
+            $pedido->setId($id);
+            $pedido->setPago($pago);
+            $pedido->pago();
             header('location: ' . base_url . 'pedidos/detalles&id=' . $id);
         }
         header('location: ' . base_url . 'pedidos/detalles&id=' . $id);
